@@ -5,20 +5,13 @@ import plotly.express as px
 
 vehicles_df = pd.read_csv('vehicles_us.csv')
 
-st.header('Charts for Cars', anchor=None, help=None, divider='blue')
+st.header('Charts for Cars', divider='blue')
 
-st.plotly_chart(plt.figure(figsize=(10, 6))
-plt.hist(vehicles_df_w_odometer['Price($)'], bins=30, edgecolor='black')
-plt.title('Distribution of Vehicle Prices')
-plt.xlabel('Price')
-plt.ylabel('Frequency')
-plt.show(), use_container_width=True, theme="streamlit", key=None, on_select="ignore", selection_mode=('points', 'box', 'lasso'), **kwargs)
+fig_hist = px.hist(vehicles_df_w_odometer, x='Price($)', bins=30, title='Distribution of Vehicle Prices', xlabel='Price', ylabel='Frequency', edgecolor='black')
+st.plotly_chart(fig_hist)
 
-st.plotly_chart(plt.figure(figsize=(10, 6))
-plt.scatter(vehicles_df_w_odometer['Odometer'], vehicles_df_w_odometer['Price($)'], alpha=0.5)
-plt.title('Scatterplot of Price vs Odometer')
-plt.xlabel('Odometer (Miles)')
-plt.ylabel('Price')
-plt.show(), use_container_width=True, theme="streamlit", key=None, on_select="ignore", selection_mode=('points', 'box', 'lasso'), **kwargs)
+fig_scatter = px.scatter(vehicles_df_w_odometer, x='Odometer (Miles)', y='Price($)', title='Price Vs Odometer', xlabel='Odometer (Miles)', ylabel='Price')
+st.plotly_chart(fig_scatter)
 
-st.checkbox('Chart Type', value=False, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False, label_visibility="visible")
+if st.checkbox('Show Dataframe'):
+  st.write(vehicles_df_w_odometer)
