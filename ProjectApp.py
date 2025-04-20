@@ -34,10 +34,10 @@ vehicles_df_w_odometer = vehicles_df_w_odometer.rename(columns={'price': 'Price(
 
 st.header('Charts for Cars')
 
-fig_hist = px.histogram(vehicles_df_w_odometer, x='Price($)', bins=30, title='Distribution of Vehicle Prices', xlabel='Price', ylabel='Frequency', edgecolor='black')
+fig_hist = px.histogram(vehicles_df_w_odometer, x='Price($)', nbins=30, title='Distribution of Vehicle Prices')
 st.plotly_chart(fig_hist)
 
-fig_scatter = px.scatter(vehicles_df_w_odometer, x='Odometer (Miles)', y='Price($)', title='Price Vs Odometer', xlabel='Odometer (Miles)', ylabel='Price')
+fig_scatter = px.scatter(vehicles_df_w_odometer, x='Odometer (Miles)', y='Price($)', title='Price Vs Odometer')
 st.plotly_chart(fig_scatter)
 
 if st.checkbox('Show Dataframe'):
