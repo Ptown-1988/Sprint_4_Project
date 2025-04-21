@@ -43,9 +43,9 @@ st.header('Charts for Cars')
 
 st.subheader('Data Summary')
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Vehicles", len(vehicles_df_w_odometer))
-col2.metric("Average Price", f"${vehicles_df_w_odometer['Price($)'].mean():.2f}")
-col3.metric("Average Year", f"{vehicles_df_w_odometer['Year'].mean():.1f}")
+col1.metric("Total Vehicles", len(vehicles_df))
+col2.metric("Average Price", f"${vehicles_df['Price($)'].mean():.2f}")
+col3.metric("Average Year", f"{vehicles_df['Year'].mean():.1f}")
 
 fig_hist = px.histogram(vehicles_df, x='Price($)', nbins=30, title='Distribution of Vehicle Prices')
 st.plotly_chart(fig_hist)
